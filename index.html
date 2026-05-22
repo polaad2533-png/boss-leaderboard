@@ -462,9 +462,9 @@
   }
   function doLogout() { myUid=null; clearMe(); currentView='auth'; isRegister=false; lf={name:'',pass:'',err:''}; render(); }
 
-  /* OPRAVENO: Funkce pro kompletní smazání aktuálního profilu */
+  
   function doDeleteProfile() {
-    if (!confirm('Opravdu chcete smazat celý svůj profil a veškerou historii výdělků? Tato akce je nevratná.')) return;
+    if (!confirm('Are you sure you want to delete your entire profile and all earnings history? This action cannot be undone.')) return;
     bosses = bosses.filter(b => b.uid !== myUid);
     saveAll(bosses);
     myUid = null;
@@ -861,7 +861,7 @@
     /* OPRAVENO: Přidána nebezpečná zóna s tlačítkem pro vymazání celého profilu */
     const hr2=document.createElement('hr');hr2.className='divider';settCard.appendChild(hr2);
     settCard.appendChild(el('div','section-label','Nebezpečná zóna'));
-    const delBtn=el('button','btn btn-danger','Smazat celý profil');
+    const delBtn=el('button','btn btn-danger','Delete profile');
     delBtn.style.marginTop='0.5rem';
     delBtn.onclick=doDeleteProfile;
     settCard.appendChild(delBtn);
