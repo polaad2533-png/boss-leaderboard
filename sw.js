@@ -1,4 +1,13 @@
 const CACHE_NAME = 'boss-lb-cache-v2';
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keyList => {
+      return Promise.all(keyList.map(key => {
+        if (key !== CACHE_NAME) return caches.delete(key);
+      }));
+    })
+  );
+});
 const urlsToCache = [
   './index.html',
   './manifest.json'
