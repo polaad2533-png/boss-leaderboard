@@ -1,4 +1,4 @@
-const CACHE_NAME = 'boss-lb-cache-v2';
+const CACHE_NAME = 'boss-lb-cache-v';
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keyList => {
